@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent {
+  public ingredients = [];
 
+  public constructor() {
+  }
+
+  public ngOnInit(): void {
+  }
 }
