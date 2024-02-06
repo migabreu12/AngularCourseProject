@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Recipe } from './models/recipe.model';
 
 @Component({
   selector: 'app-recipe-book',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-book.component.scss']
 })
 export class RecipeBookComponent {
+  public recipe: Recipe;
 
+  public recipeSelected(recipe: Recipe) {
+    this.recipe = recipe;
+    console.log(recipe);
+  }
 }
