@@ -7,5 +7,5 @@ import { Recipe } from '../models/recipe.model';
   styleUrls: ['./recipe-item.component.scss']
 })
 export class RecipeItemComponent {
-  @Input() recipes: Recipe[];
+  @Input() recipe: Recipe;
 }
