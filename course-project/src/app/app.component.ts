@@ -7,16 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title = 'course-project';
-  public displayRecipeListFlag: boolean = true;
-  public displayShoppingListFlag: boolean = false;
+  public featureSelected = 'recipe'
 
-  public displayRecipeList() {
-    this.displayRecipeListFlag = true;
-    this.displayShoppingListFlag = false;
-  }
-
-  public displayShoppingList() {
-    this.displayRecipeListFlag = false;
-    this.displayShoppingListFlag = true;
+  public onNavigate(feature: string) {
+    this.featureSelected = feature;
   }
 }

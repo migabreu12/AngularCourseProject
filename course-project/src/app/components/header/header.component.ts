@@ -6,16 +6,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Output() displayRecipeListEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() displayShoppingListEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() featureSelected: EventEmitter<string> = new EventEmitter<string>;
 
   public collapsed = true;
 
-  public emitDisplayRecipeList() {
-    this.displayRecipeListEmitter.emit(true);
-  }
-
-  public emitDisplayShoppingList() {
-    this.displayShoppingListEmitter.emit(true);
+  public onSelect(feature: string) {
+    this.featureSelected.emit(feature);
   }
 }

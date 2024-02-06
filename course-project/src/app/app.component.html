@@ -1,12 +1,11 @@
 <app-header
-  (displayRecipeListEmitter)="displayRecipeList()"
-  (displayShoppingListEmitter)="displayShoppingList()"
+  (featureSelected)="onNavigate($event)"
   ></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipe-book *ngIf="this.displayRecipeListFlag && !this.displayShoppingListFlag"></app-recipe-book>
-      <app-shopping-list *ngIf="!this.displayRecipeListFlag && this.displayShoppingListFlag"></app-shopping-list>
+      <app-recipe-book *ngIf="this.featureSelected === 'recipe'"></app-recipe-book>
+      <app-shopping-list *ngIf="this.featureSelected === 'shopping-list'"></app-shopping-list>
     </div>
   </div>
 </div>
