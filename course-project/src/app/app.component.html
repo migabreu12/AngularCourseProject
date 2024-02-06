@@ -1,9 +1,12 @@
-<app-header></app-header>
+<app-header
+  (displayRecipeListEmitter)="displayRecipeList()"
+  (displayShoppingListEmitter)="displayShoppingList()"
+  ></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipe-book></app-recipe-book>
-      <app-shopping-list></app-shopping-list>
+      <app-recipe-book *ngIf="this.displayRecipeListFlag && !this.displayShoppingListFlag"></app-recipe-book>
+      <app-shopping-list *ngIf="!this.displayRecipeListFlag && this.displayShoppingListFlag"></app-shopping-list>
     </div>
   </div>
 </div>

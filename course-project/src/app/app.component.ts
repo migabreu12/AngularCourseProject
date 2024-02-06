@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'course-project';
+  public title = 'course-project';
+  public displayRecipeListFlag: boolean = true;
+  public displayShoppingListFlag: boolean = false;
+
+  public displayRecipeList() {
+    this.displayRecipeListFlag = true;
+    this.displayShoppingListFlag = false;
+  }
+
+  public displayShoppingList() {
+    this.displayRecipeListFlag = false;
+    this.displayShoppingListFlag = true;
+  }
 }

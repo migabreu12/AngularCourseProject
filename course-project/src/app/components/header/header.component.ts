@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  @Output() displayRecipeListEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() displayShoppingListEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   public collapsed = true;
+
+  public emitDisplayRecipeList() {
+    this.displayRecipeListEmitter.emit(true);
+  }
+
+  public emitDisplayShoppingList() {
+    this.displayShoppingListEmitter.emit(true);
+  }
 }

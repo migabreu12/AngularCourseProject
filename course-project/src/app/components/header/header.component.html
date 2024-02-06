@@ -9,10 +9,10 @@
           <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Recipes</a>
+                    <a href="#" (click)="emitDisplayRecipeList()">Recipes</a>
                 </li>
                 <li>
-                    <a href="#">Shopping List</a>
+                    <a href="#" (click)="emitDisplayShoppingList()">Shopping List</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
