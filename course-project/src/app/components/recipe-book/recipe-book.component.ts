@@ -11,6 +11,5 @@ export class RecipeBookComponent {
 
   public recipeSelected(recipe: Recipe) {
     this.recipe = recipe;
-    console.log(recipe);
   }
 }
