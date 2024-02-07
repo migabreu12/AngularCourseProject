@@ -7,8 +7,8 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./shopping-list-edit.component.scss']
 })
 export class ShoppingListEditComponent {
-  @ViewChild('nameInput', { static: true }) nameInput: ElementRef;
-  @ViewChild('amountInput', { static: true }) amountInput: ElementRef;
+  @ViewChild('nameInput', { static: false }) nameInput: ElementRef;
+  @ViewChild('amountInput', { static: false }) amountInput: ElementRef;
   @Output() submitClicked: EventEmitter<Ingredient> = new EventEmitter<Ingredient>;
 
   public submit() {
