@@ -5,7 +5,6 @@ import { RecipeService } from 'src/app/services/recipe.service';
 @Component({
   selector: 'app-recipe-book',
   templateUrl: './recipe-book.component.html',
-  styleUrls: ['./recipe-book.component.scss']
 })
 export class RecipeBookComponent implements OnInit {
   public recipe: Recipe;
