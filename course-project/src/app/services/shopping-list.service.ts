@@ -8,14 +8,8 @@ export class ShoppingListService {
   @Output() ingredientAdded = new EventEmitter<any>()
 
   private ingredients: Ingredient[] = [
-    {
-      name: "Apple",
-      amount: 5
-    },
-    {
-      name: "Tomatoes",
-      amount: 10
-    }
+    new Ingredient("Apple", 5),
+    new Ingredient("Tomatoes",  10)
   ];
 
   constructor() { }
