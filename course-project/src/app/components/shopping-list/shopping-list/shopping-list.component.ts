@@ -16,6 +16,8 @@ export class ShoppingListComponent implements OnInit {
     this.ingredients = this.shoppingListService.getIngredients();
 
     this.shoppingListService.ingredientAdded.subscribe(() => {
+      // Decided this approach since it seems expensive to emit the full array rather than emitting that
+      // the ingredients have changed and then leave the reaction to the emitter consuming code.
       this.ingredients = this.shoppingListService.getIngredients();
     });
   }
