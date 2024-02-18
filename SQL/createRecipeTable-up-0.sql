@@ -1,0 +1,1 @@
+create table Recipe (RecipeId uniqueidentifier not null primary key default newid(), Name varchar(100), Description varchar(100));
