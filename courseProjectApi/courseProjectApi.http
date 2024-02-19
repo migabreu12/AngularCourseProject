@@ -1,6 +1,6 @@
-@courseProjectApi_HostAddress = http://localhost:5014
+@CourseProjectApi_HostAddress = http://localhost:5110
 
-GET {{courseProjectApi_HostAddress}}/weatherforecast/
+GET {{CourseProjectApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

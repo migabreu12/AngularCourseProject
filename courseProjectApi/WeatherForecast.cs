@@ -1,4 +1,4 @@
-namespace courseProjectApi;
+namespace CourseProjectApi;
 
 public class WeatherForecast
 {
