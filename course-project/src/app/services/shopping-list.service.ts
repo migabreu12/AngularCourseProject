@@ -19,6 +19,13 @@ export class ShoppingListService {
     this.ingredientAdded.emit();
   }
 
+  public addIngredients(ingredients: Ingredient[]) {
+    // The spread operator ... will flatten the array into single items; This is great because now we can push individual objects of an array
+    // rather than pushing the array itself
+    this.ingredients.push(...ingredients);
+    this.ingredientAdded.emit();
+  }
+
   public getIngredients() {
     return this.ingredients.slice();
   }
