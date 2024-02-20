@@ -13,7 +13,7 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "recipe",
+      "launchUrl": "recipe/recipes",
       "applicationUrl": "http://localhost:5213",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -22,7 +22,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "recipe",
+      "launchUrl": "recipe/recipes",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

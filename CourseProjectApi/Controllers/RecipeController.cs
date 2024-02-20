@@ -15,9 +15,19 @@ public class RecipeController : ControllerBase {
         _dbContext = dbContext;
     }
 
-    [HttpGet]
+    [HttpGet("recipes")]
     public IEnumerable<Recipe> GetRecipes() {
+        // ToDo: Replace with service
         List<Recipe> recipes = _dbContext.Recipe.ToList();
+
         return recipes.ToArray<Recipe>();
+    }
+
+    [HttpGet("ingredientswithrecipes")]
+    public IEnumerable<IngredientView> GetIngredientsWithRecipeDetails() {
+        // ToDo: Replace with service
+        List<IngredientView> ingredientViews = _dbContext.IngredientView.ToList();
+
+        return ingredientViews;
     }
 }
