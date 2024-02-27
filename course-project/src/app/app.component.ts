@@ -6,10 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public title = 'course-project';
-  public featureSelected = 'recipe'
-
-  public onNavigate(feature: string) {
-    this.featureSelected = feature;
-  }
 }
