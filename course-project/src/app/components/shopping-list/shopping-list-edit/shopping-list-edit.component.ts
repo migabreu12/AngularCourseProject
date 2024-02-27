@@ -5,7 +5,6 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 @Component({
   selector: 'app-shopping-list-edit',
   templateUrl: './shopping-list-edit.component.html',
-  styleUrls: ['./shopping-list-edit.component.scss']
 })
 export class ShoppingListEditComponent {
   @ViewChild('nameInput', { static: false }) nameInput: ElementRef;
