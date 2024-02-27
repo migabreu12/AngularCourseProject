@@ -9,6 +9,7 @@ const routes: Routes = [
         { path: "recipe", component: RecipeBookComponent },
         { path: "shopping-list", component: ShoppingListComponent }
     ]},
+    { path: "**", redirectTo: "" }
 ]
 
 @NgModule({
