@@ -39,4 +39,10 @@ export class RecipeService {
   public addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
   }
+
+  public getRecipe(index: number): Promise<Recipe> {
+    return new Promise((resolve, reject) => {
+      resolve(this.recipes[index]);
+    });
+  }
 }
