@@ -22,11 +22,6 @@ export class RecipeDetailComponent implements OnInit {
         this.route.data.subscribe((data) => {
             this.recipe = data["recipe"];
         });
-
-        // For example purposes
-        // this.route.params.subscribe((params) => {
-        //     this.id = +params["id"];
-        // })
     }
 
     public onAddToShoppingList(): void {
@@ -34,8 +29,6 @@ export class RecipeDetailComponent implements OnInit {
     }
 
     public onEdit(): void {
-        // This is an example of using the id and creating a more "complex path" to getting to our desired route
-        // this.router.navigate(["../", this.id, "edit"], {relativeTo: this.route});
         this.router.navigate(["edit"], {relativeTo: this.route});
     }
 }
