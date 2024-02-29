@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { RecipeNotSelectedComponent } from './components/recipe-book/recipe-not-selected/recipe-not-selected.component';
+import { RecipeEditComponent } from './components/recipe-book/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RecipeNotSelectedComponent } from './components/recipe-book/recipe-not-
     RecipeBookComponent,
     DropdownDirective,
     HomeComponent,
-    RecipeNotSelectedComponent
+    RecipeNotSelectedComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,

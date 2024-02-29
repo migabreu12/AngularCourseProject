@@ -6,6 +6,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { RecipeDetailComponent } from "./components/recipe-book/recipe-detail/recipe-detail.component";
 import { RecipeResolverService } from "./services/recipe-resolver.service";
 import { RecipeNotSelectedComponent } from "./components/recipe-book/recipe-not-selected/recipe-not-selected.component";
+import { RecipeEditComponent } from "./components/recipe-book/recipe-edit/recipe-edit.component";
 
 const routes: Routes = [
     { path: "", component: HomeComponent, children: [
@@ -14,11 +15,19 @@ const routes: Routes = [
             component: RecipeBookComponent,
             children: [
                 {
+                    path: "new",
+                    component: RecipeEditComponent
+                },
+                {
                     path: ":id",
                     component: RecipeDetailComponent,
                     resolve: {
                         recipe: RecipeResolverService
                     }
+                },
+                {
+                    path: ":id/edit",
+                    component: RecipeEditComponent
                 },
                 {
                     path: "",
