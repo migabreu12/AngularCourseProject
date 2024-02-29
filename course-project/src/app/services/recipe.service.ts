@@ -24,8 +24,8 @@ export class RecipeService {
       description: 'Another test description',
       imagePath: 'https://hostthetoast.com/wp-content/uploads/2019/02/Garlic-Butter-Ribeye-Steak-and-Potatoes-6.jpg',
       ingredients: [
-        new Ingredient("Test Ingredient", 10),
-        new Ingredient("Another Test Ingredient", 20)
+        new Ingredient("Test Ingredient", 30),
+        new Ingredient("Another Test Ingredient", 50)
       ]
     }
   ];
@@ -40,9 +40,7 @@ export class RecipeService {
     this.shoppingListService.addIngredients(ingredients);
   }
 
-  public getRecipe(index: number): Promise<Recipe> {
-    return new Promise((resolve, reject) => {
-      resolve(this.recipes[index]);
-    });
+  public getRecipe(index: number): Recipe {
+    return this.recipes[index];
   }
 }
