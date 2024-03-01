@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ShoppingListService } from 'src/app/services/shopping-list.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
@@ -6,18 +7,23 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
 })
-export class ShoppingListComponent implements OnInit {
+export class ShoppingListComponent implements OnInit, OnDestroy {
   public ingredients: Ingredient[];
+  public ingredientAddedSubscription: Subscription;
 
   public constructor(private shoppingListService: ShoppingListService) {}
 
   public ngOnInit(): void {
     this.ingredients = this.shoppingListService.getIngredients();
 
-    this.shoppingListService.ingredientAdded.subscribe(() => {
+    this.ingredientAddedSubscription = this.shoppingListService.ingredientAdded.subscribe((ingredients: Ingredient[]) => {
       // Decided this approach since it seems expensive to emit the full array rather than emitting that
       // the ingredients have changed and then leave the reaction to the emitter consuming code.
-      this.ingredients = this.shoppingListService.getIngredients();
+      this.ingredients = ingredients;
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.ingredientAddedSubscription.unsubscribe();  
   }
 }
