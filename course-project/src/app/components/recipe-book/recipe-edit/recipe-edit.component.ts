@@ -28,9 +28,13 @@ export class RecipeEditComponent implements OnInit {
     });
   }
 
+  public onSubmit() {
+    console.log(this.recipeForm.value);
+  }
+
   private initForm() {
     let recipe = new Recipe("", "", "", []);
-    
+
     if(this.isEditMode) {
       recipe = this.recipeService.getRecipe(this.id);
     }
