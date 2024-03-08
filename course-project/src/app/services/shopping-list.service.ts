@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ShoppingListService {
-  public ingredientAdded = new Subject<any>();
+  public ingredientsChanged = new Subject<any>();
   public editIngredientInitiated = new Subject<number>();
 
   private ingredients: Ingredient[] = [
@@ -18,14 +18,14 @@ export class ShoppingListService {
 
   public addIngredient(ingredient: Ingredient): void {
     this.ingredients.push(ingredient);
-    this.ingredientAdded.next(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   public addIngredients(ingredients: Ingredient[]) {
     // The spread operator ... will flatten the array into single items; This is great because now we can push individual objects of an array
     // rather than pushing the array itself
     this.ingredients.push(...ingredients);
-    this.ingredientAdded.next(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   public getIngredients() {
@@ -38,6 +38,11 @@ export class ShoppingListService {
 
   public editIngredient(index: number, ingredient: Ingredient) {
     this.ingredients[index] = ingredient;
-    this.ingredientAdded.next(this.ingredients.slice());
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  public deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
