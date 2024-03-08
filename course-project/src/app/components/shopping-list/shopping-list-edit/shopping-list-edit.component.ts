@@ -10,6 +10,8 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 })
 export class ShoppingListEditComponent implements OnInit {
   public ingredientForm: FormGroup;
+  public editMode = false;
+  private indexOfIngredient: number; 
 
   public constructor(private shoppingListService: ShoppingListService) {}
 
@@ -18,13 +20,38 @@ export class ShoppingListEditComponent implements OnInit {
       "name": new FormControl(null, Validators.required),
       "amount": new FormControl(null, [Validators.required, Validators.min(0)])
     });
+
+    this.shoppingListService.editIngredientInitiated
+      .subscribe((index) => {
+        this.editMode = true;
+        this.indexOfIngredient = index;
+        // This will not work in an async method
+        const ingredientToEdit = this.shoppingListService.getIngredient(index);
+        this.ingredientForm.setValue({
+          "name": ingredientToEdit.name,
+          "amount": ingredientToEdit.amount
+        });
+      });
   }
 
   public submit() {
-    this.shoppingListService.addIngredient(
-      new Ingredient(
-        this.ingredientForm.get("name").value,
-        this.ingredientForm.get("amount").value
-      ));
+    if(this.editMode) {
+      // Using the ingredientForm.value as the parameter only works because the javascript object of the form group
+      // is identical to the Ingredient object.
+      this.shoppingListService.editIngredient(this.indexOfIngredient, this.ingredientForm.value);
+      this.editMode = false;
+    } else {
+      this.shoppingListService.addIngredient(
+        new Ingredient(
+          this.ingredientForm.get("name").value,
+          this.ingredientForm.get("amount").value
+        ));
+    }
+  }
+
+  public clear() {
+    this.editMode = false;
+    this.ingredientForm.reset();
+    this.indexOfIngredient = null;
   }
 }
