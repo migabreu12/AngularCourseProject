@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
+import { Recipe } from '../models/recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -28,19 +29,16 @@ export class RecipeEditComponent implements OnInit {
   }
 
   private initForm() {
+    let recipe = new Recipe("", "", "", []);
+    
     if(this.isEditMode) {
-      const recipeToEdit = this.recipeService.getRecipe(this.id);
-      this.recipeForm = new FormGroup({
-        "name": new FormControl(recipeToEdit.name, Validators.required),
-        "description": new FormControl(recipeToEdit.description),
-        "imagePath": new FormControl(recipeToEdit.imagePath, Validators.required)
-      });
-    } else {
-      this.recipeForm = new FormGroup({
-        "name": new FormControl(null, Validators.required),
-        "description": new FormControl(null),
-        "imagePath": new FormControl(null, Validators.required)
-      });
+      recipe = this.recipeService.getRecipe(this.id);
     }
+
+    this.recipeForm = new FormGroup({
+      "name": new FormControl(recipe.name, Validators.required),
+      "description": new FormControl(recipe.description),
+      "imagePath": new FormControl(recipe.imagePath, Validators.required)
+    });
   }
 }
