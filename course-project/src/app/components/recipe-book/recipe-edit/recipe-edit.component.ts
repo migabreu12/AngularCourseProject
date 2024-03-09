@@ -3,11 +3,11 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Recipe } from '../models/recipe.model';
-import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
+  styleUrls: ["./recipe-edit.component.scss"]
 })
 export class RecipeEditComponent implements OnInit {
   private id: number;
@@ -41,8 +41,8 @@ export class RecipeEditComponent implements OnInit {
   public onAddIngredient() {
     (<FormArray>this.recipeForm.get("ingredients"))
       .push(new FormGroup({
-        "name": new FormControl(),
-        "amount": new FormControl()
+        "name": new FormControl(null, Validators.required),
+        "amount": new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
       }));
   }
 
@@ -56,8 +56,9 @@ export class RecipeEditComponent implements OnInit {
       if(recipe.ingredients) {
         for(let ingredient of recipe.ingredients) {
           ingredientsFormArray.push(new FormGroup({
-            "name": new FormControl(ingredient.name),
-            "amount": new FormControl(ingredient.amount)
+            "name": new FormControl(ingredient.name, Validators.required),
+            // Creating a reg exp can be done with two slashes like: /reg.exp/
+            "amount": new FormControl(ingredient.amount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
           }))
         }
       }
@@ -65,7 +66,7 @@ export class RecipeEditComponent implements OnInit {
 
     this.recipeForm = new FormGroup({
       "name": new FormControl(recipe.name, Validators.required),
-      "description": new FormControl(recipe.description),
+      "description": new FormControl(recipe.description, Validators.required),
       "imagePath": new FormControl(recipe.imagePath, Validators.required),
       "ingredients": ingredientsFormArray
     });
